@@ -33,7 +33,7 @@ class Detail extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildListDelegate(content(context)),
-          )
+          ),
         ],
       ),
     );
@@ -75,6 +75,74 @@ class Detail extends StatelessWidget {
       Container(
         height: 300,
       )
+    ];
+  }
+
+  List<Widget> staticListItems() {
+    return [
+      Container(
+        height: 100,
+        color: Colors.red[100],
+        child: FlutterLogo(
+          colors: Colors.orange,
+          style: FlutterLogoStyle.horizontal,
+          textColor: Colors.indigo,
+        ),
+      ),
+      Container(
+        height: 100,
+        color: Colors.red[200],
+        child: FlutterLogo(
+          colors: Colors.orange,
+          style: FlutterLogoStyle.horizontal,
+          textColor: Colors.indigo,
+        ),
+      ),
+      Container(
+        height: 100,
+        color: Colors.red[300],
+        child: FlutterLogo(
+          colors: Colors.orange,
+          style: FlutterLogoStyle.horizontal,
+          textColor: Colors.indigo,
+        ),
+      ),
+      Container(
+        height: 100,
+        color: Colors.red[400],
+        child: FlutterLogo(
+          colors: Colors.orange,
+          style: FlutterLogoStyle.horizontal,
+          textColor: Colors.indigo,
+        ),
+      ),
+      Container(
+        height: 100,
+        color: Colors.red[500],
+        child: FlutterLogo(
+          colors: Colors.grey,
+          style: FlutterLogoStyle.horizontal,
+          textColor: Colors.grey[50],
+        ),
+      ),
+      Container(
+        height: 100,
+        color: Colors.red[600],
+        child: FlutterLogo(
+          colors: Colors.yellow,
+          style: FlutterLogoStyle.horizontal,
+          textColor: Colors.yellow,
+        ),
+      ),
+      Container(
+        height: 100,
+        color: Colors.blue[600],
+        child: FlutterLogo(
+          colors: Colors.yellow,
+          style: FlutterLogoStyle.horizontal,
+          textColor: Colors.white,
+        ),
+      ),
     ];
   }
 }

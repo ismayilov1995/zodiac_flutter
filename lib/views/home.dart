@@ -8,9 +8,18 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "Zodiac App",
-          style: TextStyle(color: Colors.white),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Zodiac App",
+              style: TextStyle(color: Colors.white),
+            ),
+            IconButton(
+              icon: Icon(Icons.info),
+              onPressed: () => Navigator.pushNamed(context, '/about'),
+            )
+          ],
         ),
       ),
       body: HomeBody(),

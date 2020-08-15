@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zodiac_app/views/about.dart';
 import 'package:zodiac_app/views/detail.dart';
 import 'package:zodiac_app/views/home.dart';
 
@@ -12,6 +13,7 @@ class AppNavigation extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (ctx) => Home(),
+        '/about': (ctx) => About(),
       },
       onGenerateRoute: (settings) {
         List<String> paths = settings.name.split("/");
