@@ -23,12 +23,9 @@ class Detail extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(selectedZodiac.name),
               centerTitle: true,
-              background: Container(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image:
-                            AssetImage("assets/images/${selectedZodiac.cover}"),
-                        fit: BoxFit.cover)),
+              background: Image.asset(
+                "assets/images/${selectedZodiac.cover}",
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -41,38 +38,39 @@ class Detail extends StatelessWidget {
   }
 
   Widget content(BuildContext context) {
-    return Column(children: [
-      Container(
-        margin: EdgeInsets.symmetric(vertical: 20),
-        child: Text(
-          selectedZodiac.name,
-          style: Theme.of(context).textTheme.headline3,
-          textAlign: TextAlign.center,
-        ),
-      ),
-      Divider(
-        indent: 100,
-        endIndent: 100,
-      ),
-      Padding(
-        padding: EdgeInsets.only(bottom: 12),
-        child: Text(
-          selectedZodiac.date,
-          style: TextStyle(fontSize: 20, color: Colors.blueGrey),
-          textAlign: TextAlign.center,
-        ),
-      ),
-      Divider(),
-      Container(
-        child: Column(
-          children: [
-            Text(
-              selectedZodiac.about,
-              style: Theme.of(context).textTheme.headline6,
+    return Card(
+      margin: EdgeInsets.all(10),
+      elevation: 8,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Column(children: [
+          Container(
+            margin: EdgeInsets.symmetric(vertical: 20),
+            child: Text(
+              selectedZodiac.name,
+              style: Theme.of(context).textTheme.headline3,
+              textAlign: TextAlign.center,
             ),
-          ],
-        ),
+          ),
+          Divider(
+            indent: 100,
+            endIndent: 100,
+          ),
+          Padding(
+            padding: EdgeInsets.only(bottom: 12),
+            child: Text(
+              selectedZodiac.date,
+              style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Divider(),
+          Text(
+            selectedZodiac.about,
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+        ]),
       ),
-    ]);
+    );
   }
 }
