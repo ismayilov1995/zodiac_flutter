@@ -11,7 +11,14 @@ class AppNavigation extends StatelessWidget {
       title: "Zodiac App",
       routes: {
         '/': (ctx) => Home(),
-        '/detail': (ctx) => Detail(),
+      },
+      onGenerateRoute: (settings) {
+        List<String> paths = settings.name.split("/");
+        if (paths[1] == "detail") {
+          return MaterialPageRoute(
+              builder: (context) => Detail(int.parse(paths[2])));
+        }
+        return null;
       },
     );
   }

@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
 class HomeBody extends StatelessWidget {
   // Dummy info
   final List<Zodiac> _zodiacList = List.generate(
-      12, (index) => Zodiac("Zodiac $index", "20${index}2-19$index"));
+      13, (index) => Zodiac("Zodiac $index", "20${index}2-19$index"));
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +34,7 @@ class HomeBody extends StatelessWidget {
               title: Text(_zodiacList[index].name),
               subtitle: Text(_zodiacList[index].date),
               trailing: Icon(Icons.arrow_right),
+              onTap: () => Navigator.pushNamed(context, "/detail/$index"),
             ),
           );
         });
