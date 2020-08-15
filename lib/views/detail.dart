@@ -6,6 +6,7 @@ import 'package:zodiac_app/views/home.dart';
 class Detail extends StatelessWidget {
   final int selectedZodiacIndex;
   Zodiac selectedZodiac;
+
   Detail(this.selectedZodiacIndex);
 
   @override
@@ -31,16 +32,16 @@ class Detail extends StatelessWidget {
               ),
             ),
           ),
-          SliverList(
-            delegate: SliverChildListDelegate(content(context)),
+          SliverToBoxAdapter(
+            child: content(context),
           )
         ],
       ),
     );
   }
 
-  List<Widget> content(BuildContext context) {
-    return [
+  Widget content(BuildContext context) {
+    return Column(children: [
       Container(
         margin: EdgeInsets.symmetric(vertical: 20),
         child: Text(
@@ -72,9 +73,6 @@ class Detail extends StatelessWidget {
           ],
         ),
       ),
-      Container(
-        height: 300,
-      )
-    ];
+    ]);
   }
 }
