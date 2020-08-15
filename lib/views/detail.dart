@@ -1,22 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:zodiac_app/model/Zodiac.dart';
 import 'package:zodiac_app/views/home.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 // ignore: must_be_immutable
-class Detail extends StatelessWidget {
+class Detail extends StatefulWidget {
   final int selectedZodiacIndex;
-  Zodiac selectedZodiac;
 
   Detail(this.selectedZodiacIndex);
 
   @override
+  _DetailState createState() => _DetailState();
+}
+
+class _DetailState extends State<Detail> {
+  Zodiac selectedZodiac;
+  Color appBarColor = Colors.deepOrange;
+  PaletteGenerator paletteGenerator;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedZodiac = Home.zodiacList[widget.selectedZodiacIndex];
+    fetchAppBarColor();
+  }
+
+  void fetchAppBarColor() {
+    Future<PaletteGenerator> generatedColor =
+        PaletteGenerator.fromImageProvider(
+            AssetImage("assets/images/${selectedZodiac.cover}"));
+    generatedColor.then((value) {
+      paletteGenerator = value;
+      if (paletteGenerator.vibrantColor.color != null) {
+        setState(() {
+          appBarColor = paletteGenerator.vibrantColor.color;
+        });
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    selectedZodiac = Home.zodiacList[selectedZodiacIndex];
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: Colors.deepOrange,
+            backgroundColor: appBarColor,
             expandedHeight: 250,
             floating: false,
             pinned: true,
