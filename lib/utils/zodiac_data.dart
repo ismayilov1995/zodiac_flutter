@@ -1,4 +1,4 @@
-class Strings {
+class AppZodiacData {
   static const String APP_NAME = "Burç Rehberi";
 
   static const List<String> BURC_ADLARI = [
