@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zodiac_app/data/app_data.dart';
 import 'package:zodiac_app/model/Zodiac.dart';
 import 'package:zodiac_app/utils/zodiac_data.dart';
 
 class Home extends StatelessWidget {
+  List<Zodiac> zodiacList;
+
   @override
   Widget build(BuildContext context) {
-    final List<Zodiac> _zodiacList = loadDataset();
+    zodiacList = loadDataset();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -15,7 +16,7 @@ class Home extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: HomeBody(),
+      body: HomeList(),
     );
   }
 
@@ -26,7 +27,7 @@ class Home extends StatelessWidget {
           "${AppZodiacData.BURC_ADLARI[i].toLowerCase()}${i + 1}.png";
       String cover =
           "${AppZodiacData.BURC_ADLARI[i].toLowerCase()}_buyuk${i + 1}.png";
-      String name = AppZodiacData.APP_NAME[i];
+      String name = AppZodiacData.BURC_ADLARI[i];
       String date = AppZodiacData.BURC_TARIHLERI[i];
       String about = AppZodiacData.BURC_GENEL_OZELLIKLERI[i];
       Zodiac newZodiac = Zodiac(name, date, about, avatar, cover);
@@ -34,24 +35,26 @@ class Home extends StatelessWidget {
     }
     return zodiacts;
   }
-}
 
-class HomeBody extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  Widget HomeList() {
     return ListView.builder(
-        itemCount: 12,
-        itemBuilder: (context, index) {
-          return Card(
-            margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-            child: ListTile(
-//              leading: Image.asset(),
-//              title: Text(),
-//              subtitle: Text(),
-              trailing: Icon(Icons.arrow_right),
-              onTap: () => Navigator.pushNamed(context, "/detail/$index"),
-            ),
-          );
-        });
+      itemCount: zodiacList.length,
+      itemBuilder: (context, index) {
+        return singleListItem(context, index);
+      },
+    );
+  }
+
+  Widget singleListItem(BuildContext context, int index) {
+    return Card(
+      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      child: ListTile(
+        leading: Image.asset("assets/images/${zodiacList[index].avatar}"),
+        title: Text(zodiacList[index].name),
+        subtitle: Text(zodiacList[index].date),
+        trailing: Icon(Icons.arrow_right),
+        onTap: () => Navigator.pushNamed(context, "/detail/$index"),
+      ),
+    );
   }
 }

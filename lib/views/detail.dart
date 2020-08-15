@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zodiac_app/data/app_data.dart';
 import 'package:zodiac_app/model/Zodiac.dart';
 
 // ignore: must_be_immutable
@@ -8,7 +7,7 @@ class Detail extends StatelessWidget {
   Zodiac zodiac;
 
   Detail(this.selectedZodiac) {
-    this.zodiac = AppData().getZodiac(selectedZodiac);
+//    this.zodiac = AppData().getZodiac(selectedZodiac);
   }
 
   @override
