@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:zodiac_app/model/Zodiac.dart';
+import 'package:zodiac_app/views/home.dart';
 
 // ignore: must_be_immutable
 class Detail extends StatelessWidget {
-  final int selectedZodiac;
-  Zodiac zodiac;
-
-  Detail(this.selectedZodiac) {
-//    this.zodiac = AppData().getZodiac(selectedZodiac);
-  }
+  final int selectedZodiacIndex;
+  Zodiac selectedZodiac;
+  Detail(this.selectedZodiacIndex);
 
   @override
   Widget build(BuildContext context) {
+    selectedZodiac = Home.zodiacList[selectedZodiacIndex];
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -21,12 +20,14 @@ class Detail extends StatelessWidget {
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(zodiac.name),
+              title: Text(selectedZodiac.name),
               centerTitle: true,
               background: Container(
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(zodiac.cover), fit: BoxFit.cover)),
+                        image:
+                            AssetImage("assets/images/${selectedZodiac.cover}"),
+                        fit: BoxFit.cover)),
               ),
             ),
           ),
@@ -43,7 +44,7 @@ class Detail extends StatelessWidget {
       Container(
         margin: EdgeInsets.symmetric(vertical: 20),
         child: Text(
-          zodiac.name,
+          selectedZodiac.name,
           style: Theme.of(context).textTheme.headline3,
           textAlign: TextAlign.center,
         ),
@@ -53,9 +54,9 @@ class Detail extends StatelessWidget {
         endIndent: 100,
       ),
       Padding(
-        padding: const EdgeInsets.only(bottom: 12),
+        padding: EdgeInsets.only(bottom: 12),
         child: Text(
-          zodiac.date,
+          selectedZodiac.date,
           style: TextStyle(fontSize: 20, color: Colors.blueGrey),
           textAlign: TextAlign.center,
         ),
@@ -65,7 +66,7 @@ class Detail extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              zodiac.about,
+              selectedZodiac.about,
               style: Theme.of(context).textTheme.headline6,
             ),
           ],

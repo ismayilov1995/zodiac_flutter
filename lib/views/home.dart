@@ -4,7 +4,7 @@ import 'package:zodiac_app/model/Zodiac.dart';
 import 'package:zodiac_app/utils/zodiac_data.dart';
 
 class Home extends StatelessWidget {
-  List<Zodiac> zodiacList;
+  static List<Zodiac> zodiacList;
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +46,16 @@ class Home extends StatelessWidget {
   }
 
   Widget singleListItem(BuildContext context, int index) {
+    Zodiac currentZodiac = zodiacList[index];
     return Card(
       margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
       child: ListTile(
-        leading: Image.asset("assets/images/${zodiacList[index].avatar}"),
-        title: Text(zodiacList[index].name),
-        subtitle: Text(zodiacList[index].date),
+        leading: Image.asset("assets/images/${currentZodiac.avatar}"),
+        title: Text(
+          currentZodiac.name,
+          style: TextStyle(fontSize: 20),
+        ),
+        subtitle: Text(currentZodiac.date),
         trailing: Icon(Icons.arrow_right),
         onTap: () => Navigator.pushNamed(context, "/detail/$index"),
       ),
