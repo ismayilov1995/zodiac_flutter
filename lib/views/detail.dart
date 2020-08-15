@@ -46,7 +46,6 @@ class Detail extends StatelessWidget {
     return [
       Card(
         margin: EdgeInsets.all(20),
-        elevation: 10,
         child: Column(
           children: [
             Text(
@@ -71,8 +70,30 @@ class Detail extends StatelessWidget {
         ),
       ),
       Container(
-        height: 300,
-      )
+        margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+        decoration: BoxDecoration(
+          color: Colors.white70,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              "Powered by",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w100,
+                color: Colors.brown,
+              ),
+            ),
+            FlutterLogo(
+              style: FlutterLogoStyle.horizontal,
+              size: 120,
+              colors: Colors.brown,
+            )
+          ],
+        ),
+      ),
     ];
   }
 }
