@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zodiac_app/model/Zodiac.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -17,16 +19,22 @@ class Home extends StatelessWidget {
 
 class HomeBody extends StatelessWidget {
   // Dummy info
-  final List<String> _zodiacList =
-      List.generate(200, (index) => 'Zodiac $index');
+  final List<Zodiac> _zodiacList = List.generate(
+      12, (index) => Zodiac("Zodiac $index", "20${index}2-19$index"));
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: _zodiacList.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            leading: FlutterLogo(),
+          return Card(
+            margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+            child: ListTile(
+              leading: Image.asset(_zodiacList[index].avatar),
+              title: Text(_zodiacList[index].name),
+              subtitle: Text(_zodiacList[index].date),
+              trailing: Icon(Icons.arrow_right),
+            ),
           );
         });
   }
