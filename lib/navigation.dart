@@ -9,11 +9,13 @@ class AppNavigation extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.deepOrange, accentColor: Colors.orangeAccent),
+//      theme: ThemeData.dark(),
+      darkTheme: ThemeData(primarySwatch: Colors.teal),
+      themeMode: ThemeMode.system,
       title: "Zodiac App",
       debugShowCheckedModeBanner: false,
       home: Home(),
       routes: {
-//        '/': (ctx) => Home(),
         '/about': (ctx) => About(),
       },
       onGenerateRoute: (settings) {

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:zodiac_app/data/app_data.dart';
 import 'package:zodiac_app/model/Zodiac.dart';
@@ -22,10 +21,58 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      body: Container(
-        color: Colors.teal[50],
-        child: HomeBody(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey, offset: Offset(0, 2), blurRadius: 6)
+                ],
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.deepOrange[800],
+                      Colors.orange,
+                    ]),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.person,
+                    size: 80,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Ismayil Ismayilov",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.more_horiz),
+              title: Text("Properties"),
+            ),
+            ListTile(
+              leading: Icon(Icons.wifi),
+              title: Text("Wifi"),
+            ),
+            ListTile(
+              leading: Icon(Icons.info_outline),
+              title: Text("About"),
+              onTap: () => Navigator.pushNamed(context, '/about'),
+            ),
+          ],
+        ),
       ),
+      body: HomeBody(),
     );
   }
 }
