@@ -9,6 +9,7 @@ class AppNavigation extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.deepOrange, accentColor: Colors.orangeAccent),
       title: "Zodiac App",
+      debugShowCheckedModeBanner: false,
       routes: {
         '/': (ctx) => Home(),
       },
