@@ -22,7 +22,10 @@ class Home extends StatelessWidget {
           ],
         ),
       ),
-      body: HomeBody(),
+      body: Container(
+        color: Colors.teal[50],
+        child: HomeBody(),
+      ),
     );
   }
 }

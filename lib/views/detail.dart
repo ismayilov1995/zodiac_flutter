@@ -63,19 +63,21 @@ class Detail extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Text(
                 zodiac.about,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
             )
           ],
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
-        child: Icon(
-          Icons.info_outline,
-          size: 120,
-          color: Colors.teal[200],
-        ),
+      Container(
+        height: 120,
+        margin: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(zodiac.avatar),
+                fit: BoxFit.fitHeight,
+                colorFilter:
+                    ColorFilter.mode(Colors.teal[50], BlendMode.overlay))),
       ),
       Container(
         margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
@@ -102,6 +104,9 @@ class Detail extends StatelessWidget {
           ],
         ),
       ),
+      Container(
+        height: 200,
+      )
     ];
   }
 }
