@@ -45,7 +45,7 @@ class Detail extends StatelessWidget {
   List<Widget> content(BuildContext context) {
     return [
       Card(
-        margin: EdgeInsets.all(20),
+        margin: EdgeInsets.all(10),
         child: Column(
           children: [
             Text(
@@ -69,8 +69,16 @@ class Detail extends StatelessWidget {
           ],
         ),
       ),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Icon(
+          Icons.info_outline,
+          size: 120,
+          color: Colors.teal[200],
+        ),
+      ),
       Container(
-        margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+        margin: EdgeInsets.fromLTRB(10, 0, 10, 10),
         decoration: BoxDecoration(
           color: Colors.white70,
           borderRadius: BorderRadius.circular(8),

@@ -19,7 +19,8 @@ class AppNavigation extends StatelessWidget {
         List<String> paths = settings.name.split("/");
         if (paths[1] == "detail") {
           return MaterialPageRoute(
-              builder: (context) => Detail(int.parse(paths[2])));
+            builder: (context) => Detail(int.parse(paths[2])),
+          );
         }
         return null;
       },
